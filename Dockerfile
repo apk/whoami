@@ -5,7 +5,7 @@ RUN go build -o http
 
 FROM alpine:3.6
 WORKDIR /app
-ENV PORT 8000
-EXPOSE 8000
+ENV PORT 80
+EXPOSE 80
 COPY --from=binary /app/http /app
 CMD ["/app/http"]
