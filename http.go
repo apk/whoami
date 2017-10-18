@@ -24,6 +24,7 @@ func main() {
         fmt.Fprintf(w, "Proto: %s\n", r.Proto)
         fmt.Fprintf(w, "Host: %s\n", r.Host)
         fmt.Fprintf(w, "RemoteAddr: %s\n", r.RemoteAddr)
+        fmt.Fprintf(w, "Path: %s\n", r.URL.Path)
         fmt.Fprintf(w, "\n")
         for k, v := range r.Header {
             for _, a := range v {
