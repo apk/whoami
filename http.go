@@ -1,5 +1,7 @@
 package main
 
+// run-on-change http.go -- g build http.go -- env PORT=9090 REDIR_asdf=https://there/that ./http
+
 import (
   "os"
   "fmt"
