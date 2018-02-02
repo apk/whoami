@@ -16,6 +16,15 @@ func main() {
     fmt.Fprintf(os.Stdout, "Listening on :%s\n", port)
     hostname, _ := os.Hostname()
     http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	if ((r.Method == http.MethodGet ||
+	    r.Method == http.MethodHead) && r.URL.Path == "/") {
+	    en := "REDIR_" + r.Host;
+	    ev := os.Getenv(en);
+	    if (ev != "") {
+		w.Header().Add("Location", ev);
+		w.WriteHeader (http.StatusMovedPermanently);
+	    }
+	}
         fmt.Fprintf(os.Stdout, "%s: %s %s\n", r.Host, r.Method, r.URL.Path)
         fmt.Fprintf(w, "I'm %s\n", hostname)
 
